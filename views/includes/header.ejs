@@ -1,0 +1,11 @@
+<header>
+        <h2><a href="/">Taqui Science Academy</a></h2>
+        <nav>
+            <% if (user) {%>
+            <a href="/">Home</a>
+            <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/Login">Login</a>
+            <% } %>
+        </nav>
+    </header>

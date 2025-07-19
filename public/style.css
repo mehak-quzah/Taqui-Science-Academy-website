@@ -1,0 +1,10 @@
+/* for .pacifico-font */
+.pacifico-font {
+  font-family: 'Pacifico', cursive;
+}
+  .button:active,
+  .button:focus,
+  .button:hover{
+    background-color: #0b5ed7 !important;
+    color:white !important;
+  }

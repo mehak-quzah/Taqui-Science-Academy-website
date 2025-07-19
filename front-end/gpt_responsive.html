@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT Academy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    .pacifico-font {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .navbar-toggler,
+    .navbar-toggler:focus,
+    .navbar-toggler:active {
+      box-shadow: none !important;
+      outline: none !important;
+      border: none !important;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .carousel-item {
+      height: 100vh;
+    }
+
+    .carousel-item section {
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-caption-custom {
+      position: relative;
+      z-index: 2;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-white shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <span class="pacifico-font fw-bold text-primary fs-3">TaquiScience</span>
+        <span class="text-dark fw-bold ms-2">Academy</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#admission">Admission</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact_us">Contact Us</a></li>
+        </ul>
+        <div class="d-flex mt-3 mt-lg-0 ms-lg-3">
+          <button class="btn btn-outline-primary me-2">Login</button>
+          <button class="btn btn-primary">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+  <section class="container-fluid p-0">
+  <div id="heroCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel">
+    
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <!-- Carousel Inner -->
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="d-flex align-items-center justify-content-center text-white"
+          style="background-image: url('img3.jpg');
+                 background-size: cover;
+                 background-position: center;
+                 min-height: 100vh;
+                 padding: 5rem 1rem;">
+          <div class="text-center bg-white bg-opacity-75 p-4 rounded shadow">
+            <h1 class="fw-bold text-primary pacifico-font">Inspiring Minds, Shaping Futures</h1>
+            <p class="text-dark mt-3">At <span class="pacifico-font">TaquiScience</span> Academy, we provide a nurturing environment for students to grow into confident global citizens.</p>
+            <a href="#apply" class="btn btn-primary btn-lg mt-3">Apply Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center text-white"
+          style="background-image: url('image1.jpg');
+                 background-size: cover;
+                 background-position: center;
+                 min-height: 100vh;
+                 padding: 5rem 1rem;">
+          <div class="text-center bg-white bg-opacity-75 p-4 rounded shadow">
+            <h1 class="fw-bold text-primary pacifico-font">Empowering Every Learner</h1>
+            <p class="text-dark mt-3">We believe in excellence and creativity, shaping the future one student at a time.</p>
+            <a href="#apply" class="btn btn-primary btn-lg mt-3">Join Us</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="d-flex align-items-center justify-content-center text-white"
+          style="background-image: url('img2.jpg');
+                 background-size: cover;
+                 background-position: center;
+                 min-height: 100vh;
+                 padding: 5rem 1rem;">
+          <div class="text-center bg-white bg-opacity-75 p-4 rounded shadow">
+            <h1 class="fw-bold text-primary pacifico-font">Discover. Learn. Thrive.</h1>
+            <p class="text-dark mt-3">We foster curiosity and confidence in a collaborative environment.</p>
+            <a href="#apply" class="btn btn-primary btn-lg mt-3">Explore More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+</section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

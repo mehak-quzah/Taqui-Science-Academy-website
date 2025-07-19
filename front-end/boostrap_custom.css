@@ -1,0 +1,91 @@
+
+
+.navbar-brand img{
+    max-width: 10%;
+}
+
+
+  
+ 
+  /* hover effect */
+  .navbar-nav .nav-item:hover .nav-link {
+    color:  #0b5ed7 ;
+  }
+  .dropdown-item:hover{
+    color:  #0b5ed7 ;
+  }
+  .dropdown-item:active{
+    color:  white ;
+  }
+  .button:active,
+  .button:focus,
+  .button:hover{
+    background-color: #0b5ed7 !important;
+    color:white !important;
+  }
+  .anchor:active,
+  .anchor:focus,
+  .anchor:hover{
+    background-color: #0b5ed7 !important;
+    color:white !important;
+  }
+
+
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler:active{
+    border-color: #0b5ed7  !important;
+    box-shadow: none !important;
+  }
+  
+
+  
+  .about-heading {
+    color: #012169;
+}
+
+.mission-vision-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; /* Makes the content flow vertically */
+    justify-content: flex-start; /* Aligns content at the top */
+    align-items: flex-start; /* Aligns content to the left */
+    padding: 20px;
+    min-height: 250px; /* Ensure there's enough height for the content */
+}
+.mission-card {
+    background-color: #ff9800; /* Orange */
+}
+
+.vision-card {
+    background-color: #e91e63; /* Pink */
+}
+
+/* History Section Style */
+.history-card {
+background-color: #4caf50;
+color: white;
+padding: 20px;
+overflow: auto; /* allows scroll if needed */
+border-radius: 10px;
+margin-bottom: 30px;
+}
+
+
+/* Optional: Adjusting padding and margins */
+.mission-vision-card h3,
+.history-card h3 {
+    text-align: left; /* Align all headings to the left */
+    padding-left: 20px; /* Adds a small left margin to the heading */
+    color: #012169; /* Matching the color of the headings */
+}
+
+.mission-vision-card p,
+.history-card p {
+    margin-top: 10px;
+}
+
+/* for .pacifico-font */
+.pacifico-font {
+  font-family: 'Pacifico', cursive;
+}

@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westfield Academy - Nurturing Excellence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=A%20modern%20school%20campus%20with%20beautiful%20architecture%2C%20green%20lawns%2C%20students%20walking%2C%20a%20clear%20blue%20sky%2C%20soft%20natural%20lighting%2C%20creating%20an%20inviting%20and%20academic%20atmosphere.%20The%20image%20should%20have%20a%20gradient%20from%20light%20to%20slightly%20darker%20on%20the%20right%20side%20to%20allow%20text%20overlay%20on%20the%20left%20side&width=1920&height=800&seq=school-hero&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .overlay {
+            background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.1) 100%);
+        }
+        
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .checkmark {
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        
+        .checkmark:after {
+            content: "";
+            display: none;
+        }
+        
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e2e8f0;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #3b82f6;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+        
+        .tab-active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center">
+                <span class="text-3xl font-['Pacifico'] text-primary">TaquiScience</span>
+                <span class="ml-1 text-lg font-semibold">Academy</span>
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#home" class="font-medium text-gray-700 hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="font-medium text-gray-700 hover:text-primary transition-colors">About</a>
+                <a href="#academics" class="font-medium text-gray-700 hover:text-primary transition-colors">Academics</a>
+                <a href="#staff" class="font-medium text-gray-700 hover:text-primary transition-colors">Staff</a>
+                <a href="#students" class="font-medium text-gray-700 hover:text-primary transition-colors">Students</a>
+                <a href="#admissions" class="font-medium text-gray-700 hover:text-primary transition-colors">Admissions</a>
+                <a href="#gallery" class="font-medium text-gray-700 hover:text-primary transition-colors">Gallery</a>
+                <a href="#contact" class="font-medium text-gray-700 hover:text-primary transition-colors">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#login" class="hidden md:block px-4 py-2 text-primary border border-primary rounded-button hover:bg-primary hover:text-white transition-colors whitespace-nowrap">Login</a>
+                <button class="px-4 py-2 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Apply Now</button>
+                <button id="mobileMenuButton" class="lg:hidden w-10 h-10 flex items-center justify-center">
+                    <i class="ri-menu-line text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="#home" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Home</a>
+                <a href="#about" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">About</a>
+                <a href="#academics" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Academics</a>
+                <a href="#staff" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Staff</a>
+                <a href="#students" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Students</a>
+                <a href="#admissions" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Admissions</a>
+                <a href="#gallery" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Gallery</a>
+                <a href="#contact" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Contact</a>
+                <a href="#login" class="font-medium text-gray-700 hover:text-primary transition-colors py-2">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative pt-20 min-h-[600px] flex items-center">
+        <div class="overlay absolute inset-0"></div>
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <div class="w-full md:w-1/2 lg:w-2/5">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Inspiring Minds, Shaping Futures</h1>
+                <p class="text-lg text-gray-700 mb-8">At Westfield Academy, we provide a nurturing environment where students discover their potential and develop into confident, responsible global citizens.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#admissions" class="px-6 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Apply Now</a>
+                    <a href="#about" class="px-6 py-3 border border-gray-300 rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access Grid -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-graduation-cap-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Admissions</h3>
+                    <p class="text-gray-600 mb-4">Discover our application process and join our vibrant community.</p>
+                    <a href="#admissions" class="text-primary font-medium hover:underline">Learn More →</a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-book-open-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Academics</h3>
+                    <p class="text-gray-600 mb-4">Explore our comprehensive curriculum and learning approach.</p>
+                    <a href="#academics" class="text-primary font-medium hover:underline">Learn More →</a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-calendar-event-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">News & Events</h3>
+                    <p class="text-gray-600 mb-4">Stay updated with the latest happenings and upcoming activities.</p>
+                    <a href="#events" class="text-primary font-medium hover:underline">Learn More →</a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="ri-user-settings-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Parent Portal</h3>
+                    <p class="text-gray-600 mb-4">Access resources and stay connected with your child's progress.</p>
+                    <a href="#portal" class="text-primary font-medium hover:underline">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">About Westfield Academy</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div class="flex flex-col justify-center">
+                    <h3 class="text-2xl font-semibold mb-4">Principal's Message</h3>
+                    <p class="text-gray-700 mb-6">Welcome to Westfield Academy, where we believe in nurturing not just academic excellence, but also character, creativity, and compassion. Our dedicated faculty and staff work tirelessly to create an environment where every student can thrive.</p>
+                    <p class="text-gray-700 mb-6">We understand that education is not merely about textbooks and exams, but about preparing young minds for the challenges and opportunities of tomorrow's world. At Westfield, we combine rigorous academics with holistic development to ensure our students graduate as well-rounded individuals.</p>
+                    <div class="flex items-center">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20female%20school%20principal%20with%20a%20warm%20smile%2C%20wearing%20formal%20business%20attire%2C%20against%20a%20neutral%20background%2C%20looking%20confident%20and%20approachable%2C%20high%20quality%20professional%20portrait&width=100&height=100&seq=principal&orientation=squarish" alt="Principal" class="w-16 h-16 rounded-full object-cover object-top mr-4">
+                        <div>
+                            <h4 class="font-semibold">Dr. Elizabeth Montgomery</h4>
+                            <p class="text-gray-600 text-sm">Principal, Westfield Academy</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-semibold mb-6">Our Vision & Mission</h3>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-semibold text-primary mb-2">Vision</h4>
+                        <p class="text-gray-700">To be a leading educational institution that empowers students to become innovative thinkers, compassionate leaders, and responsible global citizens who contribute positively to society.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-primary mb-2">Mission</h4>
+                        <p class="text-gray-700">We are committed to providing a stimulating and inclusive learning environment that fosters academic excellence, personal growth, and social responsibility through innovative teaching practices and strong community partnerships.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-semibold text-center mb-8">Our Core Values</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-award-line text-primary text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Excellence</h4>
+                    <p class="text-gray-600">Striving for the highest standards in all endeavors</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-heart-line text-primary text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Compassion</h4>
+                    <p class="text-gray-600">Showing empathy and care for others in our community</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-team-line text-primary text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Integrity</h4>
+                    <p class="text-gray-600">Acting with honesty and strong moral principles</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="ri-lightbulb-line text-primary text-2xl"></i>
+                    </div>
+                    <h4 class="text-lg font-semibold mb-2">Innovation</h4>
+                    <p class="text-gray-600">Embracing creativity and forward-thinking approaches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics Section -->
+    <section id="academics" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Academic Excellence</h2>
+            
+            <div class="mb-12">
+                <div class="bg-gray-100 rounded-full px-1 py-1 flex justify-between max-w-md mx-auto mb-8">
+                    <button class="academic-tab tab-active px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-1 transition-colors">Curriculum</button>
+                    <button class="academic-tab px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-1 transition-colors">Programs</button>
+                    <button class="academic-tab px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-1 transition-colors">Calendar</button>
+                </div>
+                
+                <div class="academic-content" id="curriculum-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="col-span-1 lg:col-span-2">
+                            <h3 class="text-2xl font-semibold mb-4">Our Curriculum</h3>
+                            <p class="text-gray-700 mb-4">Westfield Academy offers a comprehensive, balanced curriculum that meets national standards while encouraging critical thinking, creativity, and practical application of knowledge.</p>
+                            <p class="text-gray-700 mb-6">Our approach integrates traditional academic subjects with modern skills development, ensuring students are well-prepared for higher education and future careers.</p>
+                            
+                            <h4 class="text-lg font-semibold text-primary mb-3">Key Features:</h4>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Inquiry-based learning approach</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Integration of technology</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Project-based assessments</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Differentiated instruction</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Global perspective</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                    <span>Character development</span>
+                                </li>
+                            </ul>
+                            
+                            <a href="#" class="inline-block px-6 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Download Curriculum Guide</a>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-semibold mb-4">Subjects Offered</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">Mathematics</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">Science</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">English Language Arts</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">Social Studies</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">Foreign Languages</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">Arts & Music</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <span class="font-medium">Physical Education</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="font-medium">Technology</span>
+                                    <a href="#" class="text-primary text-sm hover:underline">Details</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="academic-content hidden" id="programs-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="ri-medal-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Advanced Placement</h4>
+                            <p class="text-gray-600 mb-4">College-level courses for high-achieving students seeking university credit.</p>
+                            <a href="#" class="text-primary font-medium hover:underline">Learn More →</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="ri-global-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">International Exchange</h4>
+                            <p class="text-gray-600 mb-4">Cultural immersion opportunities with partner schools worldwide.</p>
+                            <a href="#" class="text-primary font-medium hover:underline">Learn More →</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="ri-robot-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">STEM Initiative</h4>
+                            <p class="text-gray-600 mb-4">Enhanced focus on Science, Technology, Engineering, and Mathematics.</p>
+                            <a href="#" class="text-primary font-medium hover:underline">Learn More →</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="ri-palette-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Arts Program</h4>
+                            <p class="text-gray-600 mb-4">Comprehensive visual and performing arts curriculum for creative expression.</p>
+                            <a href="#" class="text-primary font-medium hover:underline">Learn More →</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="ri-earth-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Environmental Studies</h4>
+                            <p class="text-gray-600 mb-4">Hands-on learning about sustainability and environmental stewardship.</p>
+                            <a href="#" class="text-primary font-medium hover:underline">Learn More →</a>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                                <i class="ri-community-line text-primary text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold mb-2">Community Service</h4>
+                            <p class="text-gray-600 mb-4">Structured volunteer opportunities to develop social responsibility.</p>
+                            <a href="#" class="text-primary font-medium hover:underline">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="academic-content hidden" id="calendar-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="col-span-1 lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+                            <h3 class="text-xl font-semibold mb-4">Academic Calendar 2025-2026</h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-medium text-primary mb-2">Fall Semester</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex justify-between">
+                                        <span>First Day of Classes</span>
+                                        <span class="font-medium">September 2, 2025</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Fall Break</span>
+                                        <span class="font-medium">October 13-17, 2025</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Thanksgiving Holiday</span>
+                                        <span class="font-medium">November 24-28, 2025</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Final Exams</span>
+                                        <span class="font-medium">December 15-19, 2025</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Winter Break</span>
+                                        <span class="font-medium">December 22, 2025 - January 2, 2026</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-medium text-primary mb-2">Spring Semester</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex justify-between">
+                                        <span>Classes Resume</span>
+                                        <span class="font-medium">January 5, 2026</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Spring Break</span>
+                                        <span class="font-medium">March 16-20, 2026</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Final Exams</span>
+                                        <span class="font-medium">May 24-28, 2026</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Graduation Ceremony</span>
+                                        <span class="font-medium">June 5, 2026</span>
+                                    </li>
+                                    <li class="flex justify-between">
+                                        <span>Last Day of School</span>
+                                        <span class="font-medium">June 11, 2026</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <a href="#" class="inline-block px-4 py-2 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Download Full Calendar</a>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <h4 class="text-lg font-semibold mb-4">Important Downloads</h4>
+                            <ul class="space-y-4">
+                                <li>
+                                    <a href="#" class="flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+                                        <div class="w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="ri-file-list-3-line text-primary text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-medium">Class Timetables</h5>
+                                            <p class="text-sm text-gray-500">PDF, 1.2 MB</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+                                        <div class="w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="ri-file-list-3-line text-primary text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-medium">Exam Schedule</h5>
+                                            <p class="text-sm text-gray-500">PDF, 850 KB</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+                                        <div class="w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="ri-file-list-3-line text-primary text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-medium">Syllabus Overview</h5>
+                                            <p class="text-sm text-gray-500">PDF, 3.5 MB</p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center p-3 bg-white rounded-lg hover:bg-gray-100 transition-colors">
+                                        <div class="w-10 h-10 flex items-center justify-center mr-3">
+                                            <i class="ri-file-list-3-line text-primary text-xl"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-medium">Holiday List</h5>
+                                            <p class="text-sm text-gray-500">PDF, 500 KB</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section id="staff" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Dedicated Staff</h2>
+            
+            <div class="mb-10">
+                <h3 class="text-2xl font-semibold text-center mb-8">Faculty Highlights</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20male%20teacher%20with%20glasses%2C%20smiling%2C%20wearing%20a%20smart%20casual%20outfit%2C%20against%20a%20neutral%20background%2C%20high%20quality%20portrait&width=400&height=300&seq=teacher1&orientation=portrait" alt="Teacher" class="w-full h-48 object-cover object-top">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Dr. James Wilson</h4>
+                            <p class="text-primary text-sm mb-2">Head of Science Department</p>
+                            <p class="text-gray-600 text-sm mb-3">Ph.D. in Physics, 15+ years teaching experience</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-mail-line text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-linkedin-line text-gray-700"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20female%20teacher%20with%20long%20hair%2C%20smiling%20warmly%2C%20wearing%20professional%20attire%2C%20against%20a%20neutral%20background%2C%20high%20quality%20portrait&width=400&height=300&seq=teacher2&orientation=portrait" alt="Teacher" class="w-full h-48 object-cover object-top">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Ms. Sarah Chen</h4>
+                            <p class="text-primary text-sm mb-2">Mathematics Teacher</p>
+                            <p class="text-gray-600 text-sm mb-3">M.Sc. in Mathematics, Specialized in Calculus</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-mail-line text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-linkedin-line text-gray-700"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20female%20teacher%20with%20short%20hair%2C%20smiling%20confidently%2C%20wearing%20professional%20attire%2C%20against%20a%20neutral%20background%2C%20high%20quality%20portrait&width=400&height=300&seq=teacher3&orientation=portrait" alt="Teacher" class="w-full h-48 object-cover object-top">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Mrs. Rebecca Johnson</h4>
+                            <p class="text-primary text-sm mb-2">English Literature</p>
+                            <p class="text-gray-600 text-sm mb-3">M.A. in English Literature, Published Author</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-mail-line text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-linkedin-line text-gray-700"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20male%20teacher%20with%20a%20beard%2C%20smiling%2C%20wearing%20smart%20casual%20attire%2C%20against%20a%20neutral%20background%2C%20high%20quality%20portrait&width=400&height=300&seq=teacher4&orientation=portrait" alt="Teacher" class="w-full h-48 object-cover object-top">
+                        <div class="p-4">
+                            <h4 class="font-semibold text-lg">Mr. David Rodriguez</h4>
+                            <p class="text-primary text-sm mb-2">History & Social Studies</p>
+                            <p class="text-gray-600 text-sm mb-3">Ph.D. in History, Former Museum Curator</p>
+                            <div class="flex space-x-2">
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-mail-line text-gray-700"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full hover:bg-gray-200 transition-colors">
+                                    <i class="ri-linkedin-line text-gray-700"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <a href="#" class="inline-block px-6 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View All Faculty</a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-2xl font-semibold text-center mb-8">Administration & Support Staff</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-lg mb-4">Administrative Team</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Michael Thompson</h5>
+                                    <p class="text-sm text-gray-600">Vice Principal</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Jennifer Parker</h5>
+                                    <p class="text-sm text-gray-600">Administrative Director</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Robert Williams</h5>
+                                    <p class="text-sm text-gray-600">Finance Manager</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-lg mb-4">Student Support</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Dr. Emily Sanchez</h5>
+                                    <p class="text-sm text-gray-600">School Counselor</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Thomas Anderson</h5>
+                                    <p class="text-sm text-gray-600">Career Advisor</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Patricia Lee</h5>
+                                    <p class="text-sm text-gray-600">Special Education Coordinator</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-lg mb-4">Facilities & Support</h4>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Richard Davis</h5>
+                                    <p class="text-sm text-gray-600">Facilities Manager</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Susan Miller</h5>
+                                    <p class="text-sm text-gray-600">Head Librarian</p>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">George Wilson</h5>
+                                    <p class="text-sm text-gray-600">IT Support Specialist</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Students Section -->
+    <section id="students" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Student Life</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Student Achievements</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="ri-trophy-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">National Science Competition</h4>
+                                    <p class="text-gray-600 mb-3">Our students won first place in the National Science Competition with their innovative project on renewable energy solutions.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Science</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Innovation</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Team Award</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="ri-medal-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">International Math Olympiad</h4>
+                                    <p class="text-gray-600 mb-3">Emma Richardson and Jason Lee received gold medals at the International Mathematics Olympiad, ranking in the top 5% globally.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Mathematics</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Individual Award</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="ri-award-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg mb-1">Regional Debate Championship</h4>
+                                    <p class="text-gray-600 mb-3">Our debate team secured the championship title at the Regional Debate Tournament, demonstrating exceptional critical thinking and public speaking skills.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Debate</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Public Speaking</span>
+                                        <span class="px-3 py-1 bg-blue-100 text-primary text-sm rounded-full">Team Award</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <a href="#" class="inline-block px-6 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View All Achievements</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Class Information</h3>
+                    
+                    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold">Class Information Portal</h4>
+                                <div class="flex space-x-2">
+                                    <button class="class-tab tab-active px-3 py-1 text-sm rounded-full">Schedules</button>
+                                    <button class="class-tab px-3 py-1 text-sm rounded-full">Homework</button>
+                                    <button class="class-tab px-3 py-1 text-sm rounded-full">Attendance</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="class-content p-6" id="schedules-content">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Grade Level</label>
+                                <div class="relative">
+                                    <select class="w-full border-gray-300 rounded-md px-3 py-2 appearance-none bg-white border pr-8">
+                                        <option>Grade 9</option>
+                                        <option>Grade 10</option>
+                                        <option>Grade 11</option>
+                                        <option>Grade 12</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Monday</th>
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tuesday</th>
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Wednesday</th>
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thursday</th>
+                                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Friday</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">8:00 - 9:00</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Mathematics</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">English</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Mathematics</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Science</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Mathematics</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">9:10 - 10:10</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Science</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">History</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">English</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Mathematics</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Science</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900">10:20 - 11:20</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">History</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Science</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">PE</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">English</td>
+                                            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">History</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="mt-4 text-right">
+                                <a href="#" class="text-primary text-sm font-medium hover:underline">Download Full Schedule</a>
+                            </div>
+                        </div>
+                        
+                        <div class="class-content hidden p-6" id="homework-content">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Select Subject</label>
+                                <div class="relative">
+                                    <select class="w-full border-gray-300 rounded-md px-3 py-2 appearance-none bg-white border pr-8">
+                                        <option>All Subjects</option>
+                                        <option>Mathematics</option>
+                                        <option>Science</option>
+                                        <option>English</option>
+                                        <option>History</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-medium">Mathematics: Quadratic Equations</h5>
+                                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Due: June 18</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">Complete exercises 5-15 on page 87 of the textbook. Show all work and submit online.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">Assigned by: Ms. Chen</span>
+                                        <a href="#" class="text-primary text-sm hover:underline">View Details</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-medium">Science: Ecosystem Research</h5>
+                                        <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Due: June 20</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">Research a local ecosystem and prepare a 2-page report on its characteristics, biodiversity, and conservation status.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">Assigned by: Dr. Wilson</span>
+                                        <a href="#" class="text-primary text-sm hover:underline">View Details</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h5 class="font-medium">English: Literary Analysis</h5>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Completed</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-3">Write a 500-word analysis of the main character's development in "To Kill a Mockingbird."</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs text-gray-500">Assigned by: Mrs. Johnson</span>
+                                        <a href="#" class="text-primary text-sm hover:underline">View Feedback</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="class-content hidden p-6" id="attendance-content">
+                            <div class="mb-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h5 class="font-medium">Attendance Summary</h5>
+                                    <div class="text-sm text-gray-500">Academic Year 2025-2026</div>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <div class="text-sm text-gray-500 mb-1">Present Days</div>
+                                        <div class="text-2xl font-semibold text-green-600">175 <span class="text-sm font-normal">/ 180</span></div>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg">
+                                        <div class="text-sm text-gray-500 mb-1">Attendance Rate</div>
+                                        <div class="text-2xl font-semibold text-primary">97.2%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="px-4 py-3 bg-gray-50 border-b border-gray-200 text-sm font-medium">Recent Absences</div>
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                                <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">May 15, 2026</td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Full Day</td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm">
+                                                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Excused</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">April 22, 2026</td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Half Day</td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm">
+                                                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Excused</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">March 10, 2026</td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">Full Day</td>
+                                                <td class="px-4 py-3 whitespace-nowrap text-sm">
+                                                    <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Unexcused</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="text-right">
+                                <a href="#" class="text-primary text-sm font-medium hover:underline">View Full Attendance Record</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Admissions</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-6">Admission Process</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold mr-4">1</div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-2">Submit Application</h4>
+                                <p class="text-gray-600 mb-2">Complete the online application form with all required information about the student and family.</p>
+                                <p class="text-gray-600">Application Fee: $75 (non-refundable)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold mr-4">2</div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-2">Document Submission</h4>
+                                <p class="text-gray-600 mb-2">Submit all required documents, including academic records, recommendation letters, and identification.</p>
+                                <ul class="list-disc list-inside text-gray-600 ml-4 space-y-1">
+                                    <li>Birth certificate</li>
+                                    <li>Previous school records (2 years)</li>
+                                    <li>Teacher recommendations (2)</li>
+                                    <li>Immunization records</li>
+                                    <li>Photo ID of parents/guardians</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold mr-4">3</div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-2">Entrance Assessment</h4>
+                                <p class="text-gray-600 mb-2">Students will complete age-appropriate assessments to determine academic readiness and placement.</p>
+                                <p class="text-gray-600">Assessment areas include Mathematics, English, and general aptitude.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold mr-4">4</div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-2">Family Interview</h4>
+                                <p class="text-gray-600">Parents and students will meet with the admissions team to discuss educational goals, expectations, and ensure alignment with the school's values and mission.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-semibold mr-4">5</div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-2">Admission Decision</h4>
+                                <p class="text-gray-600 mb-2">Families will be notified of the admission decision within 2-3 weeks after completing all steps.</p>
+                                <p class="text-gray-600">Upon acceptance, an enrollment contract and deposit will be required to secure the student's place.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+                        <h4 class="text-lg font-semibold mb-4">Key Dates</h4>
+                        <ul class="space-y-3">
+                            <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                <span class="font-medium">Application Opens</span>
+                                <span>October 1, 2025</span>
+                            </li>
+                            <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                <span class="font-medium">Priority Deadline</span>
+                                <span>January 15, 2026</span>
+                            </li>
+                            <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                <span class="font-medium">Regular Deadline</span>
+                                <span>March 31, 2026</span>
+                            </li>
+                            <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                <span class="font-medium">Decision Notifications</span>
+                                <span>April 15, 2026</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <span class="font-medium">Enrollment Deadline</span>
+                                <span>May 1, 2026</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h4 class="text-lg font-semibold mb-4">Contact Admissions</h4>
+                        <p class="text-gray-600 mb-4">Have questions about the admissions process? Our team is here to help.</p>
+                        
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center mr-3">
+                                    <i class="ri-user-line text-primary"></i>
+                                </div>
+                                <span>Mrs. Catherine Brooks, Director of Admissions</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center mr-3">
+                                    <i class="ri-phone-line text-primary"></i>
+                                </div>
+                                <span>(555) 123-4567</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 flex items-center justify-center mr-3">
+                                    <i class="ri-mail-line text-primary"></i>
+                                </div>
+                                <span>admissions@westfield.edu</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#" class="block w-full py-2 bg-primary text-white text-center rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Schedule a Tour</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-2xl font-semibold mb-8 text-center">Tuition & Fees (2025-2026)</h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade Level</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Annual Tuition</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Registration Fee</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Technology Fee</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activity Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Grades K-5</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$18,500</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$500</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$350</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$250</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Grades 6-8</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$20,750</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$500</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$450</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$350</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Grades 9-12</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$23,900</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$500</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$550</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">$450</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6">
+                    <h4 class="font-semibold mb-2">Additional Information:</h4>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 ml-4">
+                        <li>Payment plans available: Annual, Semi-Annual, or Monthly (10 installments)</li>
+                        <li>Sibling discount: 10% for second child, 15% for third child and beyond</li>
+                        <li>Financial aid available for qualifying families (separate application required)</li>
+                        <li>Optional services: Transportation ($1,800/year), Lunch Program ($1,200/year)</li>
+                    </ul>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <a href="#" class="inline-block px-6 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Apply for Financial Aid</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Start Your Application</h2>
+            
+            <div class="max-w-3xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
+                <form>
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Student Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth*</label>
+                                <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Gender*</label>
+                                <div class="relative">
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8" required>
+                                        <option value="">Select</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Non-binary</option>
+                                        <option>Prefer not to say</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Current Grade*</label>
+                                <div class="relative">
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8" required>
+                                        <option value="">Select</option>
+                                        <option>Kindergarten</option>
+                                        <option>Grade 1</option>
+                                        <option>Grade 2</option>
+                                        <option>Grade 3</option>
+                                        <option>Grade 4</option>
+                                        <option>Grade 5</option>
+                                        <option>Grade 6</option>
+                                        <option>Grade 7</option>
+                                        <option>Grade 8</option>
+                                        <option>Grade 9</option>
+                                        <option>Grade 10</option>
+                                        <option>Grade 11</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Applying for Grade*</label>
+                                <div class="relative">
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8" required>
+                                        <option value="">Select</option>
+                                        <option>Kindergarten</option>
+                                        <option>Grade 1</option>
+                                        <option>Grade 2</option>
+                                        <option>Grade 3</option>
+                                        <option>Grade 4</option>
+                                        <option>Grade 5</option>
+                                        <option>Grade 6</option>
+                                        <option>Grade 7</option>
+                                        <option>Grade 8</option>
+                                        <option>Grade 9</option>
+                                        <option>Grade 10</option>
+                                        <option>Grade 11</option>
+                                        <option>Grade 12</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Parent/Guardian Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Relationship to Student*</label>
+                                <div class="relative">
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8" required>
+                                        <option value="">Select</option>
+                                        <option>Parent</option>
+                                        <option>Legal Guardian</option>
+                                        <option>Grandparent</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number*</label>
+                                <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Address*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">City*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Zip Code*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Academic Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Current School*</label>
+                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Reason for Transfer</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Has the student ever been suspended or expelled?*</label>
+                                <div class="flex space-x-4">
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="disciplinary" value="yes">
+                                        <span class="checkmark mr-2"></span>
+                                        Yes
+                                    </label>
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="disciplinary" value="no" checked>
+                                        <span class="checkmark mr-2"></span>
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Does the student have any learning accommodations or IEP?*</label>
+                                <div class="flex space-x-4">
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="accommodations" value="yes">
+                                        <span class="checkmark mr-2"></span>
+                                        Yes
+                                    </label>
+                                    <label class="custom-checkbox">
+                                        <input type="radio" name="accommodations" value="no" checked>
+                                        <span class="checkmark mr-2"></span>
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Additional Information</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?*</label>
+                                <div class="relative">
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8" required>
+                                        <option value="">Select</option>
+                                        <option>Current Family</option>
+                                        <option>Website</option>
+                                        <option>Social Media</option>
+                                        <option>Advertisement</option>
+                                        <option>School Fair</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Any questions or comments?</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="custom-checkbox flex items-start">
+                            <input type="checkbox" required>
+                            <span class="checkmark mt-1 mr-2"></span>
+                            <span class="text-sm text-gray-700">I certify that all information provided is accurate and complete. I understand that providing false information may result in the denial of admission or withdrawal of an offer.*</span>
+                        </label>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="px-8 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">School Gallery</h2>
+            
+            <div class="mb-8">
+                <div class="bg-gray-100 rounded-full px-1 py-1 flex justify-between max-w-md mx-auto">
+                    <button class="gallery-tab tab-active px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">All</button>
+                    <button class="gallery-tab px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Campus</button>
+                    <button class="gallery-tab px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Events</button>
+                    <button class="gallery-tab px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Sports</button>
+                    <button class="gallery-tab px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">Arts</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=Modern%20school%20campus%20with%20beautiful%20architecture%2C%20students%20walking%20between%20buildings%2C%20green%20spaces%2C%20sunny%20day%2C%20high%20quality%20photograph&width=600&height=400&seq=campus1&orientation=landscape" alt="Campus" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Main Campus Building</h4>
+                        <p class="text-gray-600 text-sm">Our state-of-the-art main building houses classrooms, labs, and administrative offices.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20science%20lab%20with%20students%20conducting%20experiments%2C%20modern%20equipment%2C%20engaged%20learning%2C%20bright%20well-equipped%20classroom%2C%20high%20quality%20photograph&width=600&height=400&seq=campus2&orientation=landscape" alt="Science Lab" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Science Laboratory</h4>
+                        <p class="text-gray-600 text-sm">Our advanced science labs provide hands-on learning experiences for students.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20library%20with%20students%20reading%20and%20studying%2C%20bookshelves%2C%20modern%20study%20spaces%2C%20natural%20lighting%2C%20comfortable%20seating%2C%20high%20quality%20photograph&width=600&height=400&seq=campus3&orientation=landscape" alt="Library" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Library & Media Center</h4>
+                        <p class="text-gray-600 text-sm">Our library offers extensive resources and comfortable study spaces.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20graduation%20ceremony%2C%20students%20in%20caps%20and%20gowns%2C%20proud%20parents%2C%20outdoor%20ceremony%2C%20celebration%20atmosphere%2C%20high%20quality%20photograph&width=600&height=400&seq=event1&orientation=landscape" alt="Graduation" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Graduation Ceremony 2025</h4>
+                        <p class="text-gray-600 text-sm">Celebrating the achievements of our graduating class of 2025.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20sports%20field%20with%20soccer%20match%2C%20students%20playing%2C%20spectators%20cheering%2C%20sunny%20day%2C%20athletic%20competition%2C%20high%20quality%20photograph&width=600&height=400&seq=sports1&orientation=landscape" alt="Sports" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Championship Soccer Match</h4>
+                        <p class="text-gray-600 text-sm">Our varsity team competing in the regional finals.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20art%20exhibition%20with%20student%20artwork%20displayed%2C%20visitors%20viewing%20paintings%20and%20sculptures%2C%20creative%20atmosphere%2C%20well-lit%20gallery%20space%2C%20high%20quality%20photograph&width=600&height=400&seq=arts1&orientation=landscape" alt="Art Exhibition" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Annual Art Exhibition</h4>
+                        <p class="text-gray-600 text-sm">Showcasing the creative talents of our students across all grade levels.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20music%20concert%20with%20student%20orchestra%20performing%2C%20conductor%2C%20audience%2C%20formal%20setting%2C%20evening%20performance%2C%20high%20quality%20photograph&width=600&height=400&seq=arts2&orientation=landscape" alt="Music Concert" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Spring Music Concert</h4>
+                        <p class="text-gray-600 text-sm">Our talented musicians performing classical and contemporary pieces.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20science%20fair%20with%20student%20projects%20displayed%2C%20judges%20evaluating%2C%20interactive%20demonstrations%2C%20engaged%20students%20explaining%20their%20work%2C%20high%20quality%20photograph&width=600&height=400&seq=event2&orientation=landscape" alt="Science Fair" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Annual Science Fair</h4>
+                        <p class="text-gray-600 text-sm">Students presenting innovative research and experiments to the community.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item overflow-hidden rounded-lg shadow-md">
+                    <img src="https://readdy.ai/api/search-image?query=School%20basketball%20game%20in%20gymnasium%2C%20players%20in%20action%2C%20crowd%20cheering%2C%20competitive%20atmosphere%2C%20indoor%20sports%20event%2C%20high%20quality%20photograph&width=600&height=400&seq=sports2&orientation=landscape" alt="Basketball" class="w-full h-64 object-cover object-top transition-transform duration-300 hover:scale-105">
+                    <div class="p-4 bg-white">
+                        <h4 class="font-semibold">Basketball Tournament</h4>
+                        <p class="text-gray-600 text-sm">Our basketball team competing in the inter-school tournament.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block px-6 py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section id="events" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">News & Events</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-semibold mb-6">Latest News</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+                            <div class="md:flex">
+                                <div class="md:w-1/3">
+                                    <img src="https://readdy.ai/api/search-image?query=School%20robotics%20competition%20with%20students%20working%20on%20robots%2C%20technology%20classroom%2C%20focused%20students%2C%20teamwork%2C%20high%20quality%20photograph&width=400&height=300&seq=news1&orientation=landscape" alt="Robotics Team" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-6 md:w-2/3">
+                                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                                        <i class="ri-calendar-line mr-2"></i>
+                                        <span>June 10, 2025</span>
+                                    </div>
+                                    <h4 class="text-xl font-semibold mb-2">Robotics Team Advances to National Finals</h4>
+                                    <p class="text-gray-600 mb-4">Our robotics team has qualified for the National Robotics Championship after winning the regional competition. The team's innovative design and programming skills impressed the judges.</p>
+                                    <a href="#" class="text-primary font-medium hover:underline">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+                            <div class="md:flex">
+                                <div class="md:w-1/3">
+                                    <img src="https://readdy.ai/api/search-image?query=School%20renovation%20project%2C%20construction%20workers%2C%20building%20improvements%2C%20modern%20educational%20facilities%20being%20built%2C%20high%20quality%20photograph&width=400&height=300&seq=news2&orientation=landscape" alt="Campus Expansion" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-6 md:w-2/3">
+                                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                                        <i class="ri-calendar-line mr-2"></i>
+                                        <span>June 5, 2025</span>
+                                    </div>
+                                    <h4 class="text-xl font-semibold mb-2">Campus Expansion Project Breaks Ground</h4>
+                                    <p class="text-gray-600 mb-4">Construction has begun on our new STEM building, which will feature state-of-the-art laboratories, a maker space, and collaborative learning environments.</p>
+                                    <a href="#" class="text-primary font-medium hover:underline">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+                            <div class="md:flex">
+                                <div class="md:w-1/3">
+                                    <img src="https://readdy.ai/api/search-image?query=School%20community%20service%20project%2C%20students%20volunteering%2C%20environmental%20cleanup%2C%20teamwork%2C%20outdoor%20community%20engagement%2C%20high%20quality%20photograph&width=400&height=300&seq=news3&orientation=landscape" alt="Community Service" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-6 md:w-2/3">
+                                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                                        <i class="ri-calendar-line mr-2"></i>
+                                        <span>May 28, 2025</span>
+                                    </div>
+                                    <h4 class="text-xl font-semibold mb-2">Students Lead Community Service Initiative</h4>
+                                    <p class="text-gray-600 mb-4">Our student council has organized a community-wide environmental cleanup project that has already collected over 1,000 pounds of recyclable materials.</p>
+                                    <a href="#" class="text-primary font-medium hover:underline">Read More →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <a href="#" class="inline-block px-6 py-3 border border-gray-300 rounded-button hover:bg-gray-100 transition-colors whitespace-nowrap">View All News</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Upcoming Events</h3>
+                    
+                    <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+                        <div class="p-6 space-y-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-16 h-16 bg-primary bg-opacity-10 rounded-lg flex flex-col items-center justify-center mr-4">
+                                    <span class="text-lg font-bold text-primary">18</span>
+                                    <span class="text-xs text-primary">June</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">End of Year Concert</h4>
+                                    <p class="text-sm text-gray-600 mb-1">6:00 PM - 8:30 PM</p>
+                                    <p class="text-sm text-gray-600">School Auditorium</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-16 h-16 bg-primary bg-opacity-10 rounded-lg flex flex-col items-center justify-center mr-4">
+                                    <span class="text-lg font-bold text-primary">22</span>
+                                    <span class="text-xs text-primary">June</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Parent-Teacher Conferences</h4>
+                                    <p class="text-sm text-gray-600 mb-1">1:00 PM - 7:00 PM</p>
+                                    <p class="text-sm text-gray-600">All Classrooms</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-16 h-16 bg-primary bg-opacity-10 rounded-lg flex flex-col items-center justify-center mr-4">
+                                    <span class="text-lg font-bold text-primary">25</span>
+                                    <span class="text-xs text-primary">June</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Summer Program Orientation</h4>
+                                    <p class="text-sm text-gray-600 mb-1">10:00 AM - 12:00 PM</p>
+                                    <p class="text-sm text-gray-600">Multi-Purpose Room</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-16 h-16 bg-primary bg-opacity-10 rounded-lg flex flex-col items-center justify-center mr-4">
+                                    <span class="text-lg font-bold text-primary">5</span>
+                                    <span class="text-xs text-primary">July</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Summer Sports Camp Begins</h4>
+                                    <p class="text-sm text-gray-600 mb-1">9:00 AM - 3:00 PM</p>
+                                    <p class="text-sm text-gray-600">Athletic Fields</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex-shrink-0 w-16 h-16 bg-primary bg-opacity-10 rounded-lg flex flex-col items-center justify-center mr-4">
+                                    <span class="text-lg font-bold text-primary">15</span>
+                                    <span class="text-xs text-primary">Aug</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">New Student Orientation</h4>
+                                    <p class="text-sm text-gray-600 mb-1">9:00 AM - 2:00 PM</p>
+                                    <p class="text-sm text-gray-600">Main Campus</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="px-6 py-4 bg-gray-100 text-center">
+                            <a href="#" class="text-primary font-medium hover:underline">View Full Calendar</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-white p-6 rounded-lg shadow-sm">
+                        <h4 class="font-semibold mb-4">Subscribe to Newsletter</h4>
+                        <p class="text-gray-600 text-sm mb-4">Stay updated with school news, events, and announcements.</p>
+                        <form class="space-y-4">
+                            <div>
+                                <input type="email" placeholder="Your email address" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="custom-checkbox flex items-start">
+                                    <input type="checkbox" required>
+                                    <span class="checkmark mt-1 mr-2"></span>
+                                    <span class="text-xs text-gray-600">I agree to receive email communications from Westfield Academy.</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="w-full py-2 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold mb-6">Get in Touch</h3>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">First Name*</label>
+                                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Last Name*</label>
+                                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                                <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Subject*</label>
+                                <div class="relative">
+                                    <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none pr-8" required>
+                                        <option value="">Select a subject</option>
+                                        <option>Admissions Inquiry</option>
+                                        <option>General Information</option>
+                                        <option>Schedule a Tour</option>
+                                        <option>Employment Opportunities</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line text-gray-500"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Message*</label>
+                                <textarea class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" rows="4" required></textarea>
+                            </div>
+                            <div>
+                                <label class="custom-checkbox flex items-start">
+                                    <input type="checkbox" required>
+                                    <span class="checkmark mt-1 mr-2"></span>
+                                    <span class="text-sm text-gray-600">I agree to the privacy policy and consent to having my personal data processed.</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="w-full py-3 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-map-pin-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Address</h4>
+                                    <p class="text-gray-600">123 Education Avenue<br>Westfield, CA 90210<br>United States</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-phone-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Phone</h4>
+                                    <p class="text-gray-600">Main Office: (555) 123-4567<br>Admissions: (555) 123-4568<br>Fax: (555) 123-4569</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-mail-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email</h4>
+                                    <p class="text-gray-600">General Inquiries: info@westfield.edu<br>Admissions: admissions@westfield.edu<br>Support: support@westfield.edu</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                    <i class="ri-time-line text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Office Hours</h4>
+                                    <p class="text-gray-600">Monday - Friday: 8:00 AM - 4:30 PM<br>Saturday: 9:00 AM - 12:00 PM (Admissions Only)<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden h-80">
+                        <div class="h-full w-full" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Westfield Academy</h3>
+                    <p class="text-gray-300 mb-4">Inspiring minds, shaping futures since 1985. We are committed to providing excellence in education and nurturing the leaders of tomorrow.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#academics" class="text-gray-300 hover:text-white transition-colors">Academics</a></li>
+                        <li><a href="#admissions" class="text-gray-300 hover:text-white transition-colors">Admissions</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#events" class="text-gray-300 hover:text-white transition-colors">News & Events</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Parent Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Student Login</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Staff Directory</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Academic Calendar</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">School Policies</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Career Opportunities</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Alumni Network</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Subscribe</h3>
+                    <p class="text-gray-300 mb-4">Subscribe to our newsletter for updates on school events and news.</p>
+                    <form class="space-y-3">
+                        <div>
+                            <input type="email" placeholder="Your email address" class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <button type="submit" class="w-full py-2 bg-primary text-white rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Westfield Academy. All rights reserved.</p>
+                <div class="flex justify-center space-x-4 mt-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="mobileMenuToggle">
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+
+    <script id="academicTabs">
+        document.addEventListener('DOMContentLoaded', function() {
+            const academicTabs = document.querySelectorAll('.academic-tab');
+            const academicContents = document.querySelectorAll('.academic-content');
+            
+            academicTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    academicTabs.forEach(t => t.classList.remove('tab-active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('tab-active');
+                    
+                    // Hide all content
+                    academicContents.forEach(content => content.classList.add('hidden'));
+                    
+                    // Show corresponding content
+                    academicContents[index].classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+
+    <script id="classTabs">
+        document.addEventListener('DOMContentLoaded', function() {
+            const classTabs = document.querySelectorAll('.class-tab');
+            const classContents = document.querySelectorAll('.class-content');
+            
+            classTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    classTabs.forEach(t => t.classList.remove('tab-active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('tab-active');
+                    
+                    // Hide all content
+                    classContents.forEach(content => content.classList.add('hidden'));
+                    
+                    // Show corresponding content
+                    classContents[index].classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+
+    <script id="galleryTabs">
+        document.addEventListener('DOMContentLoaded', function() {
+            const galleryTabs = document.querySelectorAll('.gallery-tab');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    galleryTabs.forEach(t => t.classList.remove('tab-active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('tab-active');
+                    
+                    // Filter gallery items based on selected tab
+                    if (index === 0) {
+                        // Show all items
+                        galleryItems.forEach(item => item.style.display = 'block');
+                    } else {
+                        const category = tab.textContent.toLowerCase();
+                        
+                        galleryItems.forEach(item => {
+                            const itemTitle = item.querySelector('h4').textContent.toLowerCase();
+                            const itemDesc = item.querySelector('p').textContent.toLowerCase();
+                            
+                            if (itemTitle.includes(category) || itemDesc.includes(category)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+     <header>
+        <h2><a href="/">Our Wonderfull App</a></h2>
+        <nav>
+            <% if (user) {%>
+            <a href="/create-post">Create Post</a>
+            <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/Login">Login</a>
+            <% } %>
+        </nav>
+    </header>
+    <main>
+    <h2>Welcome to our dashboard</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta commodi, aliquam vel aspernatur dignissimos voluptatibus deleniti dolore rerum illum consectetur est fugit. Sit repudiandae in ducimus laborum natus id mollitia.</p>
+    </main>
+    <footer>
+        <small>&copy;Our Wonderful App</small>
+    </footer>
+</body>
+</html>

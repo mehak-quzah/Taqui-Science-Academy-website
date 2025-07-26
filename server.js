@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 
 app.get("/register", (req, res) => {
   if (req.user) {
-    return res.render("proj")
+    return res.render("index")
   }
   res.render("registeration")
 })

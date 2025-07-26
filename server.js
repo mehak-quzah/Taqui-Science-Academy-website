@@ -50,14 +50,14 @@ app.use(function (req, res, next) {
 
 app.get("/", (req, res) => {
 
-  res.render("proj")
+  res.render("index")
 })
 
 app.get("/register", (req, res) => {
   if (req.user) {
     return res.render("proj")
   }
-  res.render("homepage")
+  res.render("registeration")
 })
 
 app.get("/logout", (req, res) => {
@@ -93,7 +93,7 @@ app.post("/register", (req, res) => {
   if (req.body.c_password !== req.body.password) errors.push("Passwords do not match");
 
   if (errors.length) {
-    return res.render("homepage", { errors });
+    return res.render("registeration", { errors });
   }
 
   // Hashing
@@ -127,13 +127,13 @@ app.post("/register", (req, res) => {
 
   } catch (err) {
     if (err.code === 'SQLITE_CONSTRAINT' && err.message.includes('user_account.useremail')) {
-      return res.render("homepage", {
+      return res.render("registeration", {
         errors: ["This email is already registered. Please log in or use a different one."]
       });
     }
 
     console.error("Registration error:", err);
-    return res.render("homepage", {
+    return res.render("registeration", {
       errors: ["This email is already registered. Please log in or use a different one."]
     });
   }

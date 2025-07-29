@@ -254,6 +254,19 @@ function mustbeloggedin(req, res, next) {
     res.render("includes/not_logedin")
   }
 }
+
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS contact (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    firstName STRING,
+    lastName STRING,
+    email STRING,
+    phone STRING,
+    subject STRING,
+    message STRING
+  )
+`).run();
+
 app.get("/contact", mustbeloggedin, (req, res) => {
   res.render("contact")
 })
